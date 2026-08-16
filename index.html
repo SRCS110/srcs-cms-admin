@@ -3,20 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login — SRCS CMS</title>
+<title>Sign in — SRCS CMS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/brand.css">
 <link rel="stylesheet" href="/assets/css/admin.css">
+<link rel="stylesheet" href="/assets/css/login.css">
 </head>
 <body>
-  <div class="center-screen">
-    <form class="card" id="login-form" style="width: 320px;">
-      <h1 style="margin-top:0;font-size:18px;">Sign in</h1>
-      <label class="field-label">Email</label>
-      <input type="email" id="email" required autocomplete="username">
-      <label class="field-label">Password</label>
-      <input type="password" id="password" required autocomplete="current-password">
-      <button type="submit" style="width:100%;">Sign in</button>
-      <p class="muted" id="login-error" style="color:#dc2626;"></p>
-    </form>
+  <div class="login-shell">
+    <aside class="login-brand-panel">
+      <a href="https://www.srcs.online" class="login-mark" target="_blank" rel="noopener">
+        <span class="dot"></span> Sync Race Studios
+      </a>
+
+      <div class="login-brand-copy">
+        <span class="kicker">CMS</span>
+        <h1>Websites that feel like somewhere worth staying.</h1>
+        <p>Sign in to manage your site's content and assets. Changes go live the moment you save — no rebuilds, no waiting.</p>
+      </div>
+
+      <div class="login-brand-foot">
+        &copy; 2026 Sync Race Studios &middot; hello@srcs.online
+      </div>
+    </aside>
+
+    <main class="login-form-panel">
+      <div class="login-card">
+        <h2 class="login-title">Sign in</h2>
+        <p class="login-sub">Continue to your CMS dashboard.</p>
+
+        <form id="login-form">
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" placeholder="you@example.com" required autocomplete="username">
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" required autocomplete="current-password">
+          </div>
+          <p class="login-error" id="login-error"></p>
+          <button type="submit" class="btn btn-lamp">Sign in</button>
+        </form>
+      </div>
+    </main>
   </div>
 
   <script type="module">

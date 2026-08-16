@@ -1,0 +1,96 @@
+/* ============================================================
+   Login screen — split layout, styled after srcs.online.
+   Left: brand/marketing panel (dark, warm). Right: sign-in card.
+   ============================================================ */
+
+.login-shell{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns: 1.15fr 1fr;
+}
+
+@media (max-width: 860px){
+  .login-shell{ grid-template-columns: 1fr; }
+  .login-brand-panel{ display:none; }
+}
+
+/* ---------- left panel ---------- */
+.login-brand-panel{
+  position:relative;
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(2rem,4vw,3.5rem);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  overflow:hidden;
+}
+.login-brand-panel::before{
+  content:'';
+  position:absolute; inset:0 0 auto 0; height:70%;
+  background:
+    radial-gradient(58% 44% at 68% 0%, rgba(255,111,78,.22), transparent 64%),
+    radial-gradient(50% 38% at 18% 6%, rgba(29,106,174,.14), transparent 68%);
+  pointer-events:none;
+}
+
+.login-mark{
+  position:relative; z-index:1;
+  display:flex; align-items:center; gap:.6rem;
+  font-weight:600; font-size:1rem; text-decoration:none; color:var(--paper);
+}
+.login-mark .dot{ width:9px; height:9px; border-radius:50%; background:var(--lamp); }
+
+.login-brand-copy{ position:relative; z-index:1; max-width:36ch; }
+.login-brand-copy .kicker{ color:var(--lamp); }
+.login-brand-copy h1{
+  color:var(--paper);
+  font-size:clamp(2rem,3.6vw,3rem);
+  margin-bottom:1rem;
+}
+.login-brand-copy p{
+  color:#D9C9BE;
+  font-size:1.05rem;
+  line-height:1.6;
+}
+
+.login-brand-foot{
+  position:relative; z-index:1;
+  color:#B7A79C;
+  font-size:.85rem;
+}
+
+/* ---------- right panel ---------- */
+.login-form-panel{
+  display:flex; align-items:center; justify-content:center;
+  padding: clamp(2rem,5vw,4rem);
+  background: var(--paper);
+}
+
+.login-card{
+  width:100%;
+  max-width:380px;
+}
+
+.login-card .login-title{
+  font-size:1.7rem;
+  margin-bottom:.4rem;
+}
+.login-card .login-sub{
+  color:var(--dust);
+  font-size:.95rem;
+  margin-bottom:1.75rem;
+}
+
+.login-card form{ display:grid; gap:1.15rem; }
+
+.login-card button[type="submit"]{
+  width:100%;
+  margin-top:.25rem;
+}
+
+.login-error{
+  color:var(--lamp-ink);
+  font-size:.88rem;
+  min-height:1.2em;
+}
