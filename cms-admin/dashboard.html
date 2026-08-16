@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — SRCS CMS</title>
+<link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <h1>SRCS CMS</h1>
+      <nav>
+        <a href="/dashboard.html" class="active">Sites</a>
+        <a href="/pages/new-site.html">+ New site</a>
+        <a href="#" id="logout-link">Log out</a>
+      </nav>
+    </aside>
+    <main class="main">
+      <h2>Your sites</h2>
+      <div id="site-list"></div>
+    </main>
+  </div>
+
+  <script type="module">
+    import { requireSession, getMySites, setActiveSiteId, logout } from "/assets/js/auth.js";
+    import { el, toast } from "/assets/js/utils.js";
+
+    await requireSession();
+
+    document.getElementById("logout-link").addEventListener("click", (e) => {
+      e.preventDefault();
+      logout();
+    });
+
+    try {
+      const memberships = await getMySites();
+      const list = document.getElementById("site-list");
+      if (!memberships.length) {
+        list.appendChild(el("p", { class: "muted", text: "No sites yet. Create one to get started." }));
+      }
+      for (const m of memberships) {
+        const site = m.sites;
+        const card = el("div", { class: "card" });
+        const row = el("div", { class: "row", style: "justify-content:space-between;" });
+        row.appendChild(el("div", {}, [
+          el("strong", { text: site.name }),
+          el("div", { class: "muted", text: `${site.domain || "no domain set"} — role: ${m.role}` }),
+        ]));
+        const openBtn = el("button", { text: "Open" });
+        openBtn.addEventListener("click", () => {
+          setActiveSiteId(site.id);
+          window.location.href = "/pages/content-editor.html";
+        });
+        row.appendChild(openBtn);
+        card.appendChild(row);
+        list.appendChild(card);
+      }
+    } catch (err) {
+      toast(err.message, true);
+    }
+  </script>
+</body>
+</html>

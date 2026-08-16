@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Editor — SRCS CMS</title>
+<link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <h1>SRCS CMS</h1>
+      <nav>
+        <a href="/dashboard.html">Sites</a>
+        <a href="/pages/content-editor.html" class="active">Content</a>
+        <a href="/pages/asset-library.html">Assets</a>
+        <a href="/pages/site-settings.html">Site settings</a>
+        <a href="#" id="logout-link">Log out</a>
+      </nav>
+    </aside>
+    <main class="main">
+      <h2>Content editor</h2>
+
+      <div class="card">
+        <label class="field-label">Page</label>
+        <select id="page-select"></select>
+
+        <details style="margin-top:8px;">
+          <summary class="muted" style="cursor:pointer;">+ Add a new page</summary>
+          <form id="new-page-form" style="margin-top:12px;">
+            <label class="field-label">Slug (matches the .html filename, e.g. "about")</label>
+            <input type="text" id="new-page-slug" required>
+            <label class="field-label">Title</label>
+            <input type="text" id="new-page-title">
+            <button type="submit">Create page</button>
+          </form>
+        </details>
+      </div>
+
+      <div id="blocks-container"></div>
+    </main>
+  </div>
+
+  <script type="module" src="/assets/js/content-editor.js"></script>
+  <script type="module">
+    import { requireSession, logout } from "/assets/js/auth.js";
+    await requireSession();
+    document.getElementById("logout-link").addEventListener("click", (e) => { e.preventDefault(); logout(); });
+  </script>
+</body>
+</html>
