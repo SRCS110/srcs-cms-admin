@@ -8,5 +8,5 @@
 // Replace these two values with your project's, then leave this file
 // as-is in the repo (it's fine to commit).
 
-export const SUPABASE_URL = "https://YOUR-PROJECT-REF.supabase.co";
-export const SUPABASE_ANON_KEY = "YOUR-PUBLIC-ANON-KEY";
+export const SUPABASE_URL = "https://jderjlkdxbvlsfrzvcfd.supabase.co";
+export const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpkZXJqbGtkeGJ2bHNmcnp2Y2ZkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY5MTgwMjEsImV4cCI6MjEwMjQ5NDAyMX0.Xw8vURuI3nu_qO57Hpx6O3zVXxLqkmF-ZWM2mCRAQQM";
