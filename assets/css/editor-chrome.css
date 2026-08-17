@@ -1,0 +1,55 @@
+/* ============================================================
+   Editor-only affordances for the visual content editor's iframe.
+   Layered on top of site-preview.css so the page still looks like
+   the real site, just with hover/focus hints showing what's
+   editable. Never loaded on the live client site.
+   ============================================================ */
+
+.hvs-editable {
+  outline: 1px dashed transparent;
+  outline-offset: 3px;
+  border-radius: 3px;
+  cursor: text;
+  transition: outline-color .15s ease, background-color .15s ease;
+}
+.hvs-editable:hover {
+  outline-color: #FF6F4E;
+  background-color: rgba(255, 111, 78, .06);
+}
+.hvs-editable:focus {
+  outline: 2px solid #FF6F4E;
+  background-color: rgba(255, 111, 78, .08);
+}
+
+.hvs-url-block {
+  outline: 1px dashed transparent;
+  outline-offset: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+.hvs-url-block:hover {
+  outline-color: #1D6AAE;
+  background-color: rgba(29, 106, 174, .08);
+}
+.hvs-url-block::after {
+  content: "\270E edit link";
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: -apple-system, system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: #1D6AAE;
+  background: #fff;
+  padding: 3px 7px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: opacity .15s ease;
+  z-index: 10;
+}
+.hvs-url-block:hover::after { opacity: 1; }

@@ -16,7 +16,6 @@
       <h1>SRCS CMS</h1>
       <nav>
         <a href="/dashboard.html" class="active">Sites</a>
-        <a href="/pages/new-site.html">+ New site</a>
         <a href="#" id="logout-link">Log out</a>
       </nav>
     </aside>
@@ -41,7 +40,7 @@
       const memberships = await getMySites();
       const list = document.getElementById("site-list");
       if (!memberships.length) {
-        list.appendChild(el("p", { class: "muted", text: "No sites yet. Create one to get started." }));
+        list.appendChild(el("p", { class: "muted", text: "No sites yet. Ask Sync Race Studios to add you to one." }));
       }
       for (const m of memberships) {
         const site = m.sites;
